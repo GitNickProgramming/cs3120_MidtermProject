@@ -7,6 +7,8 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report
+from sklearn.preprocessing import LabelEncoder
 
 sns.set_palette('husl')
 
@@ -86,7 +88,7 @@ logreg = LogisticRegression()
 logreg.fit(X_train, y_train)
 y_pred = logreg.predict(X_test)
 print(metrics.accuracy_score(y_test, y_pred))
-
+print(classification_report(y_test, logreg.predict(X_test)))
 knn = KNeighborsClassifier(n_neighbors=12)
 knn.fit(X, y)
 
